@@ -77,14 +77,14 @@ module SimpleCaptcha #:nodoc
       render :partial => 'simple_captcha/simple_captcha'
     end
 
-    def show_simple_captcha_url(options={})
+    def simple_captcha_image_url(options={})
       options[:field_value] = set_simple_captcha_data(options[:code_type])
-      return _show_simple_captcha_url(options)
+      return _simple_captcha_image_url(options)
     end
 
     private
 
-    def _show_simple_captcha_url(options={})
+    def _simple_captcha_image_url(options={})
       return simple_captcha_url(
           :action             => 'simple_captcha',
           :simple_captcha_key => simple_captcha_key,
@@ -95,7 +95,7 @@ module SimpleCaptcha #:nodoc
     end
 
     def simple_captcha_image(options={})
-      url = _show_simple_captcha_url(options)
+      url = _simple_captcha_image_url(options)
       "<img src='#{url}' alt='simple_captcha.jpg' />"
     end
     
